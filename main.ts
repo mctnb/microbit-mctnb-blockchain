@@ -10,6 +10,7 @@ let worth = 1;
 let bitcoin = 30000;
 let mctnb = 0;
 let percentage = calculate(worth, bitcoin);
+let kelp = false;
 
 // Initate start-up
 
@@ -21,7 +22,9 @@ basic.showString("Starting now MCTNB is worth 0.003% of a bitcoin.");
 
 input.onPinPressed(TouchPin.P0, function(){
     mctnb += 0.1;
-    basic.showNumber(mctnb);
+    if(!kelp){
+        basic.showNumber(mctnb);
+    }
 });
 
 input.onPinPressed(TouchPin.P1, function(){
@@ -32,4 +35,12 @@ input.onPinPressed(TouchPin.P1, function(){
 input.onPinPressed(TouchPin.P2, function(){
     basic.showString("RESET");
     mctnb = 0;
+});
+
+// Button Press
+
+input.onButtonPressed(Button.A, function(){
+    basic.showString("Simple Mode");
+    basic.showString("No longer will show number.");
+    kelp = true;
 });
